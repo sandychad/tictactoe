@@ -7,6 +7,19 @@ const styles = {
   margin: "20px auto",
 };
 
+const btnStyle = {
+  fontSize: "28px",
+  width: 225,
+};
+
+const listStyle = {
+  listStyleType: "none",
+};
+
+const labelStyle = {
+  textAlign: "center",
+};
+
 const Game = () => {
   const [history, setHistory] = useState([Array(9).fill(null)]);
   const [stepNumber, setStepNumber] = useState(0);
@@ -17,6 +30,7 @@ const Game = () => {
     const timeInHistory = history.slice(0, stepNumber + 1);
     const current = timeInHistory[stepNumber];
     const squares = [...current];
+
     // If user clicks an occupied square, or if game is won, retur
     if (winner || squares[i]) return;
     // Put an X or an O in the clicked square
@@ -37,10 +51,12 @@ const Game = () => {
 
   const renderMoves = () =>
     history.map((_step, move) => {
-      const destination = move ? `Go to move # ${move}` : "Go to start";
+      const destination = move ? `Move # ${move}` : "Go to start";
       return (
-        <li key={move}>
-          <button onClick={() => jumpTo(move)}>{destination}</button>
+        <li key={move} style={listStyle}>
+          <button style={btnStyle} onClick={() => jumpTo(move)}>
+            {destination}
+          </button>
         </li>
       );
     });
@@ -49,11 +65,11 @@ const Game = () => {
     <>
       <Board squares={history[stepNumber]} onClick={handleClick} />
       <div style={styles}>
-        <p>
-          {xIsNext === null
-            ? "No More Moves!"
-            : winner
+        <p style={labelStyle}>
+          {winner
             ? "Winner: " + winner
+            : xIsNext === null
+            ? "No More Moves!"
             : "Next Player: " + (xIsNext ? "X" : "O")}
         </p>
         {renderMoves()}

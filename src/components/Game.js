@@ -23,13 +23,7 @@ const Game = () => {
     squares[i] = xIsNext ? "X" : "O";
     setHistory([...timeInHistory, squares]);
     setStepNumber(timeInHistory.length);
-    if (stepNumber === 8) {
-      setXisNext(null);
-      console.log(stepNumber.toString() + " " + xIsNext.toString());
-      return;
-    }
     setXisNext(!xIsNext);
-    console.log(stepNumber.toString() + " " + xIsNext.toString());
   };
 
   const jumpTo = (step) => {
@@ -52,9 +46,7 @@ const Game = () => {
       <Board squares={history[stepNumber]} onClick={handleClick} />
       <div style={styles}>
         <p>
-          {xIsNext === null
-            ? "No More Moves!"
-            : winner
+          {winner
             ? "Winner: " + winner
             : "Next Player: " + (xIsNext ? "X" : "O")}
         </p>

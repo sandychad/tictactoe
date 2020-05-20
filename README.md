@@ -2,7 +2,7 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 ## React Tic-Tac-Toe
 
-Check out the app here: https://github.com/sandychad/tictactoe
+Check out the app here: https://sandychad.github.io/tictactoe/
 
 Developed by Sandilya Chadalavada based on this Scrimba tutorial: https://scrimba.com/course/greactgame
 
